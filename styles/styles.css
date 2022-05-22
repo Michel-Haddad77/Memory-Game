@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+  }
+
+body{
+    background-color: rgb(19, 1, 83);
+}
+
+.container{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.first-section{
+    display: flex;
+    justify-content: center;
+}
+
+.second-section{
+    display: flex;
+    justify-content: center;
+}
+
+.first-section div, .second-section div{
+    padding: 2%;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 10%;
+    font-size: 4em;
+}
+
+button {
+    height: 130px;
+    width: 130px;
+    border-radius: 15px;
+    border-color: black;
+}
