@@ -18,15 +18,15 @@ document.addEventListener("keydown",start);
 
 function start(){
     console.log("start is working");
-    //add random number to array function
+    document.removeEventListener('keydown', start);
+    player_array = [];
     randomButton();
     clickedButton();
-    console.log(player_array);
+    console.log("Player:"+ player_array);
 }
 
 
 function randomButton(){
-    console.log("random is working");
     let randomNumber = Math.floor(Math.random() * 4) + 1;
     if (randomNumber==1){
         audioGreen.play();
@@ -58,23 +58,54 @@ function changeOpacity(btn){
 }
 
 function clickedButton(){
-    buttonGreen.addEventListener('click',function(){
+    if (buttonGreen.addEventListener('click',function(){
         audioGreen.play();
         player_array.push(1);
-    })
+        checker();
+    }));
 
-    buttonRed.addEventListener('click',function(){
+    else if(buttonRed.addEventListener('click',function(){
         audioRed.play();
         player_array.push(2);
-    })
+        checker();
+    }));
 
-    buttonYellow.addEventListener('click',function(){
+    else if(buttonYellow.addEventListener('click',function(){
         audioYellow.play();
         player_array.push(3);
-    })
+        checker();
+    }));
 
-    buttonBlue.addEventListener('click',function(){
+    else if(buttonBlue.addEventListener('click',function(){
         audioBlue.play();
         player_array.push(4);
-    })
+        checker();
+    }));
+}
+
+function checker(){
+    console.log(`array: ${array}, player: ${player_array}`);
+    if (array[player_array.length-1] == player_array[player_array.length-1]){
+        if (array.length == player_array.length){
+        console.log("round finished")
+          setTimeout(function() {
+            start();
+          }, 1000);
+        }
+    }
+    else{
+        endGame();
+    }
+}
+
+function endGame(){
+    audioWrong.play();
+    array = [];
+    player_array = [];
+    document.getElementById("status").innerHTML = "Game Over, Press Any Key to Restart";
+    document.body.style.backgroundColor = "red";
+    setTimeout(function() {
+        document.body.style.backgroundColor = "rgb(19, 1, 83)";
+      }, 500);
+    document.addEventListener("keydown",start);
 }
